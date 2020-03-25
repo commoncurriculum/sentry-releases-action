@@ -246,9 +246,6 @@ const run = async () => {
     const tagName = core.getInput('tagName', {
       required: true
     });
-    const environment = core.getInput('environment', {
-      required: true
-    });
 
     // This removes the 'refs/tags' portion of the string, i.e. from 'refs/tags/v1.0.0' to 'v1.0.0'
     const tag = tagName.replace('refs/tags/', '');
@@ -267,7 +264,7 @@ const run = async () => {
     const sentryCliPath = SentryCli.getPath();
 
     core.info(`sentryCliPath: ${sentryCliPath}`);
-    await runCommand(sentryCliPath, ['releases', 'deploys', tag, 'new', '-e', environment]);
+    await runCommand(sentryCliPath, ['releases', 'deploys', tag, 'new']);
 
     // Finalize the release
     await cli.releases.finalize(tag);
