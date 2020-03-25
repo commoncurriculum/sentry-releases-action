@@ -6,7 +6,7 @@ inputs:
     required: true
   environment:
     description: 'Environment name'
-    required: true
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
